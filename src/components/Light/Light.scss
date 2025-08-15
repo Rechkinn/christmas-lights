@@ -1,0 +1,82 @@
+$default-color-light: rgb(124, 124, 124);
+
+@keyframes pulse {
+  100% {
+    background-color: $default-color-light;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@mixin bgc-and-shadow($color, $delay: 0s) {
+  background-color: $color;
+  box-shadow: 0 0 15px 1px $color;
+  animation-name: pulse;
+  animation-timing-function: linear;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-delay: $delay;
+}
+
+.light {
+  //   background-color: #636363;
+  width: 100px;
+  //   height: 100px;
+
+  &__colored-glass {
+    $width: 20px;
+    $color-dark-gray: rgb(71, 71, 71);
+
+    &::before {
+      position: absolute;
+      top: -3px;
+      content: "";
+      display: block;
+
+      background-color: $color-dark-gray;
+      width: $width;
+      height: 15px;
+      z-index: 100;
+    }
+
+    margin-top: 3px;
+    position: relative;
+    background-color: $default-color-light;
+    width: $width;
+    height: calc($width + 25px);
+    border-radius: 50%;
+    z-index: 10;
+
+    &::after {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      content: "";
+      display: block;
+
+      background-color: transparent;
+      width: 100px;
+      height: 40px;
+      border: 2px solid $color-dark-gray;
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      border-radius: 50%;
+      //   border-bottom-left-radius: 1000px;
+      //   border-bottom-right-radius: 1000px;
+    }
+
+    &_red {
+      @include bgc-and-shadow(red);
+    }
+    &_green {
+      @include bgc-and-shadow(rgb(26, 255, 0), 1.3s);
+    }
+    &_blue {
+      @include bgc-and-shadow(rgb(126, 234, 253), 0.65s);
+    }
+    &_purple {
+      @include bgc-and-shadow(rgb(170, 87, 229), 2s);
+    }
+  }
+}

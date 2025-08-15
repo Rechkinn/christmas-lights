@@ -1,0 +1,27 @@
+.christmas-light {
+  position: fixed;
+  &__lights {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  &__button {
+    $wh: 50px;
+    position: relative;
+    width: $wh;
+    height: $wh;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 16px;
+    color: white;
+    transition: all 300ms;
+  }
+
+  &__button:hover {
+    background-color: white;
+    color: black;
+  }
+  &__button:active {
+    scale: 0.8;
+  }
+}
